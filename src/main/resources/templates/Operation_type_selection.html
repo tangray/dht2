@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>***系统</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.step.css}">
+    <link rel="stylesheet" th:href="@{/css/parameter.css}">
+
+</head>
+
+<body>
+<div class="container container-small">
+    <div class="zhankong" style="visibility:hidden;">
+        <br>
+        <br>
+        <br>
+    </div>
+    <form id="sendParameterForm" action="/sendType" method="post" class="form-horizontal">
+        <h2 style="text-align:center;">请选择操作类型</h2>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">操作类型</label>
+            <div class="col-sm-8">
+                <select id="type_selection" class="form-control">
+                    <option value="" disabled selected hidden>请选择</option>
+                    <option value="1">查询</option>
+                    <option value="2">添加</option>
+                    <option value="3">更改</option>
+                    <option value="4">删除</option>
+                </select>
+            </div>
+        </div>
+    </form>
+    <div class="col-sm-offset-3 col-sm-8 ">
+        <a href="" id="eee">
+            <button id="next" class="btn btn-lg btn-primary btn-block" type="button">下一步</button>
+        </a>
+    </div>
+</div>
+
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{js/jquery.step.min.js}"></script>
+
+<script>
+
+    $("#type_selection").change(function () {
+        option = $("#type_selection").find("option:selected").text();
+        // console.log(option);
+        // if (option === "查询") {
+        //     // console.log(1);
+        //     $("#eee").attr("href", "query_input.html");
+        // }
+        // console.log($("#eee").find("href").text());
+
+        switch (option) {
+            case "查询":
+                $("#eee").attr("href", "query_input.html");
+                break;
+            case "添加":
+                $("#eee").attr("href", "add_input.html");
+                break;
+            case "更改":
+                $("#eee").attr("href", "change_input.html");
+                break;
+            case "删除":
+                $("#eee").attr("href", "delete_input.html");
+                break;
+            default:
+                break;
+        }
+        // console.log(typeof option);
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bupt.fnl.dht.dao.NodeAliveMapper">
+  <resultMap id="BaseResultMap" type="bupt.fnl.dht.pojo.NodeAlive">
+    <id column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="node_id" jdbcType="INTEGER" property="nodeId" />
+    <result column="port" jdbcType="VARCHAR" property="port" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ip, node_id, port
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from node_list
+    where ip = #{ip,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from node_list
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from node_list
+    where ip = #{ip,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByNodeID" parameterType="bupt.fnl.dht.pojo.NodeAlive">
+    delete from node_list
+    where node_id = #{nodeId}
+  </delete>
+  <insert id="insert" parameterType="bupt.fnl.dht.pojo.NodeAlive">
+    insert into node_list (ip, node_id, port
+      )
+    values (#{ip,jdbcType=VARCHAR}, #{nodeId,jdbcType=INTEGER}, #{port,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="bupt.fnl.dht.pojo.NodeAlive">
+    insert into node_list
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="node_id != null">
+        node_id,
+      </if>
+      <if test="port != null">
+        port,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="node_id != null">
+        #{nodeId,jdbcType=INTEGER},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="bupt.fnl.dht.pojo.NodeAlive">
+    update node_list
+    <set>
+      <if test="node_id != null">
+        node_id = #{nodeId,jdbcType=INTEGER},
+      </if>
+      <if test="port != null">
+        port = #{port,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ip = #{ip,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="bupt.fnl.dht.pojo.NodeAlive">
+    update node_list
+    set node_id = #{nodeId,jdbcType=INTEGER},
+      port = #{port,jdbcType=VARCHAR}
+    where ip = #{ip,jdbcType=VARCHAR}
+  </update>
+</mapper>
