@@ -51,7 +51,7 @@ public class Controller {
         in.setTop(top);
         in.setSecond(second);
         IdentityServiceModel serviceModel = identityService.queryByIdentity(in);
-        result.put("解析结果", convertFromServiceModel(serviceModel));
+        result.put("result", convertFromServiceModel(serviceModel));
         return result;
     }
 
