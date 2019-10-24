@@ -19,8 +19,8 @@
         <br>
         <br>
     </div>
-    <form id="sendAddParameterForm" action="/test/add" method="post" class="form-horizontal">
-        <h2 style="text-align:center;">添加</h2>
+    <form id="sendUpdateParameterForm" action="/test/update" method="post" class="form-horizontal">
+        <h2 style="text-align:center;">更改</h2>
 
         <div class="form-group">
             <label class="col-sm-3 control-label">前缀</label>
@@ -47,7 +47,7 @@
 <!--        <div class="form-group">-->
 <!--            <label class="col-sm-3 control-label">公钥</label>-->
 <!--            <div class="col-sm-8">-->
-<!--                <input id="publicKey" type="text" class="form-control" placeholder="请输入公钥">-->
+<!--                <input id="publicKey"  type="text" class="form-control" placeholder="请输入公钥">-->
 <!--            </div>-->
 <!--        </div>-->
 
@@ -60,13 +60,12 @@
     </form>
 </div>
 
-<!--<script th:src="@{/js/jquery.js}"></script>-->
-<!--<script th:src="@{js/jquery.step.min.js}"></script>-->
-
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{js/jquery.step.min.js}"></script>
 <script>
 
     $("#next").on("click", function () {
-        var from = document.getElementById("sendAddParameterForm");
+        var from = document.getElementById("sendUpdateParameterForm");
         from.submit();
     });
 

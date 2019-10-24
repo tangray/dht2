@@ -1,14 +1,13 @@
-<!DOCTYPE html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>***系统</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{/css/jquery.step.css}">
-    <link rel="stylesheet" th:href="@{/css/parameter.css}">
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -19,7 +18,8 @@
         <br>
         <br>
     </div>
-    <form id="sendParameterForm" action="/sendType" method="post" class="form-horizontal">
+<!--    /test/querypara-->
+    <form id="sendOperationType" name="sendOperationType" class="form-horizontal">
         <h2 style="text-align:center;">请选择操作类型</h2>
 
         <div class="form-group">
@@ -42,39 +42,27 @@
     </div>
 </div>
 
-<script th:src="@{/js/jquery.js}"></script>
-<script th:src="@{js/jquery.step.min.js}"></script>
-
 <script>
 
     $("#type_selection").change(function () {
         option = $("#type_selection").find("option:selected").text();
-        // console.log(option);
-        // if (option === "查询") {
-        //     // console.log(1);
-        //     $("#eee").attr("href", "query_input.html");
-        // }
-        // console.log($("#eee").find("href").text());
-
         switch (option) {
             case "查询":
-                $("#eee").attr("href", "query_input.html");
+                $("#eee").attr("href", "/test/querypara");
                 break;
             case "添加":
-                $("#eee").attr("href", "add_input.html");
+                $("#eee").attr("href", "/test/addpara");
                 break;
             case "更改":
-                $("#eee").attr("href", "change_input.html");
+                $("#eee").attr("href", "/test/updatepara");
                 break;
             case "删除":
-                $("#eee").attr("href", "delete_input.html");
-                break;
+                $("#eee").attr("href", "/test/deletepara");
+                 break;
             default:
                 break;
         }
-        // console.log(typeof option);
     })
-
 </script>
 </body>
 

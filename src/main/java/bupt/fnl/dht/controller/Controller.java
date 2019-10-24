@@ -8,6 +8,7 @@ import bupt.fnl.dht.service.NodeListService;
 import bupt.fnl.dht.service.serviceModel.IdentityServiceModel;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,6 +55,7 @@ public class Controller {
         return result;
     }
 
+    @Async("webTaskExecutor")
     @RequestMapping(value = "/queryall", method = RequestMethod.GET)
     public Map<String, Object> queryAll() {
         Map<String, Object> result = new HashMap<String, Object>();
